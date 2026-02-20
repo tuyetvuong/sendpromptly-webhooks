@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {% if page.title %}
+    <title>{{ page.title }} | {{ site.title }}</title>
+    {% else %}
+    <title>{{ site.title }}</title>
+    {% endif %}
+
+    {% if page.canonical %}
+      {% assign canon = page.canonical %}
+    {% elsif page.canonical_path %}
+      {% assign canon = site.canonical_base | append: page.canonical_path %}
+    {% else %}
+      {% assign canon = site.canonical_base %}
+    {% endif %}
+    <link rel="canonical" href="{{ canon }}" />
+
+    <meta name="robots" content="{{ page.robots | default: 'noindex,follow' }}" />
+
+    {% seo %}
+
+    <style>
+      body { max-width: 880px; margin: 2rem auto; padding: 0 1rem; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial; line-height: 1.5; }
+      code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+      pre { padding: 1rem; overflow-x: auto; border-radius: 10px; }
+      .note { padding: .75rem 1rem; border-left: 4px solid #1e88e5; background: rgba(30, 136, 229, 0.08); border-radius: 10px; }
+      a { text-decoration: none; }
+      a:hover { text-decoration: underline; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <p><strong><a href="{{ '/' | relative_url }}">{{ site.title }}</a></strong></p>
+      <p class="note">
+        This GitHub Pages site is a <strong>reference kit</strong>. Canonical documentation lives on
+        <a href="https://sendpromptly.com/docs/">sendpromptly.com</a>.
+      </p>
+      <hr/>
+    </header>
+    <main>
+      {{ content }}
+    </main>
+    <footer>
+      <hr/>
+      <p><small>Built by Devicode. Canonical: <a href="https://sendpromptly.com/">sendpromptly.com</a></small></p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "description": "SendPromptly-style signed webhook test vectors (HMAC-SHA256 over `{timestamp}.{raw_body}`; hex output; header format `v1=<hex>`).",
+  "secret_example": "whsec_68239046823904682390",
+  "vectors": [
+    {
+      "name": "basic-json",
+      "timestamp": "1700000000",
+      "raw_body": "{\"event_key\":\"order.created\",\"payload\":{\"order_id\":\"O-1001\"}}",
+      "note": "Standard valid payload (JSON, no whitespace reformatting).",
+      "expected_signature_hex": "4a9da59a33c5b0449591d01ff641b09d3ba7f554ffdc477a0f5dc6303eb4dadd",
+      "expected_header": "v1=4a9da59a33c5b0449591d01ff641b09d3ba7f554ffdc477a0f5dc6303eb4dadd"
+    },
+    {
+      "name": "unicode-utf8",
+      "timestamp": "1700000000",
+      "raw_body": "{\"unicode\":\"\u2705\",\"message\":\"na\u00efve caf\u00e9\"}",
+      "note": "UTF-8 characters; must sign raw bytes as received.",
+      "expected_signature_hex": "0978ca0ceb370fdf56c70260947c4c6e07dac8568dddd77472f0299b175b2f68",
+      "expected_header": "v1=0978ca0ceb370fdf56c70260947c4c6e07dac8568dddd77472f0299b175b2f68"
+    },
+    {
+      "name": "newlines",
+      "timestamp": "1700000000",
+      "raw_body": "{\n  \"event_key\": \"order.created\",\n  \"payload\": {\"order_id\": \"O-1002\"}\n}\n",
+      "note": "Newlines + indentation; signature breaks if tools normalize line endings or re-encode JSON.",
+      "expected_signature_hex": "1f4a449b9e0f383647a09f61204c224cdceed2ad6a96484277ea79ef94ac56bf",
+      "expected_header": "v1=1f4a449b9e0f383647a09f61204c224cdceed2ad6a96484277ea79ef94ac56bf"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="360" viewBox="0 0 980 360">
+  <rect width="980" height="360" fill="#ffffff"/>
+  <g font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="16" fill="#0b1220">
+    <rect x="40" y="60" width="220" height="90" rx="14" fill="#f7f9fc" stroke="#d9e2f2"/>
+    <text x="70" y="105" font-weight="700">Receive webhook</text>
+    <text x="70" y="130">raw body + headers</text>
+
+    <rect x="300" y="60" width="220" height="90" rx="14" fill="#f7f9fc" stroke="#d9e2f2"/>
+    <text x="330" y="105" font-weight="700">Verify signature</text>
+    <text x="330" y="130">HMAC + timestamp</text>
+
+    <rect x="560" y="60" width="220" height="90" rx="14" fill="#f7f9fc" stroke="#d9e2f2"/>
+    <text x="590" y="105" font-weight="700">Idempotency gate</text>
+    <text x="590" y="130">UNIQUE message_id</text>
+
+    <rect x="300" y="200" width="220" height="90" rx="14" fill="#f7f9fc" stroke="#d9e2f2"/>
+    <text x="330" y="245" font-weight="700">ACK fast</text>
+    <text x="330" y="270">return 2xx</text>
+
+    <rect x="560" y="200" width="220" height="90" rx="14" fill="#f7f9fc" stroke="#d9e2f2"/>
+    <text x="590" y="245" font-weight="700">Process async</text>
+    <text x="590" y="270">queue + DLQ</text>
+
+    <path d="M260 105 L300 105" stroke="#1e88e5" stroke-width="3"/>
+    <path d="M520 105 L560 105" stroke="#1e88e5" stroke-width="3"/>
+    <path d="M670 150 L410 200" stroke="#1e88e5" stroke-width="3"/>
+    <path d="M520 245 L560 245" stroke="#1e88e5" stroke-width="3"/>
+  </g>
+</svg>

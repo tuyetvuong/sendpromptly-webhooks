@@ -1,0 +1,79 @@
+{
+  "info": {
+    "name": "SendPromptly Webhook Receiver (Local Test)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Send signed webhook (local receiver)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-SP-Timestamp",
+            "value": "{{sp_timestamp}}"
+          },
+          {
+            "key": "X-SP-Signature",
+            "value": "{{sp_signature}}"
+          },
+          {
+            "key": "X-SP-Message-Id",
+            "value": "msg_postman_demo_{{sp_timestamp}}"
+          }
+        ],
+        "url": {
+          "raw": "{{receiver_url}}",
+          "host": [
+            "{{receiver_url}}"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"event_key\":\"order.created\",\"payload\":{\"order_id\":\"O-1001\"}}"
+        }
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Compute v1 signature for SendPromptly-style contract",
+              "const crypto = require('crypto');",
+              "const ts = Math.floor(Date.now()/1000).toString();",
+              "pm.environment.set('sp_timestamp', ts);",
+              "const secret = pm.environment.get('sp_secret');",
+              "const body = pm.request.body.raw;",
+              "const signed = `${ts}.${body}`;",
+              "const sig = crypto.createHmac('sha256', secret).update(signed, 'utf8').digest('hex');",
+              "pm.environment.set('sp_signature', `v1=${sig}`);"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "receiver_url",
+      "value": "http://localhost:3000/webhooks/sendpromptly"
+    },
+    {
+      "key": "sp_secret",
+      "value": "whsec_replace_me"
+    },
+    {
+      "key": "sp_timestamp",
+      "value": ""
+    },
+    {
+      "key": "sp_signature",
+      "value": ""
+    }
+  ]
+}

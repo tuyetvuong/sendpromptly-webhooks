@@ -1,0 +1,13 @@
+title: SendPromptly Webhooks — Reference Kit
+description: Signed webhook verification + idempotency + retries (reference kit).
+theme: minima
+plugins:
+  - jekyll-seo-tag
+
+# We use canonical tags to point at the money site, not GitHub Pages.
+canonical_base: https://sendpromptly.com
+
+# NOTE:
+# GitHub Pages will host this site at:
+#   https://<org>.github.io/<repo>/
+# The repo name is unknown at build-time, so we avoid hardcoding baseurl here.

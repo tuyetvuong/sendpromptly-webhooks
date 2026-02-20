@@ -1,0 +1,17 @@
+openapi: 3.0.3
+info:
+  title: SendPromptly (Reference snippets only)
+  version: "0.1"
+  description: |
+    This is a **partial** OpenAPI file intended for examples and tooling demos.
+    For canonical endpoint docs, use https://sendpromptly.com/api/reference/
+servers:
+  - url: https://sendpromptly.com
+paths:
+  /api/reference/:
+    get:
+      summary: API Reference (canonical)
+      responses:
+        "200":
+          description: See the canonical reference on sendpromptly.com
+components: {}
