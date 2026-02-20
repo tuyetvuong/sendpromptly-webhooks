@@ -17,6 +17,8 @@ set -euo pipefail
 
 URL=""
 BODY=""
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SIGNER="${SCRIPT_DIR}/compute_signature.py"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -36,11 +38,21 @@ if [[ -z "${SP_WEBHOOK_SECRET:-}" ]]; then
   exit 1
 fi
 
+if [[ ! -f "${SIGNER}" ]]; then
+  echo "Missing signer script: ${SIGNER}"
+  exit 1
+fi
+
 TS="$(date +%s)"
-SIG="$(python3 ./scripts/compute_signature.py --secret "${SP_WEBHOOK_SECRET}" --timestamp "${TS}" --body "${BODY}")"
+SIG="$(python3 "${SIGNER}" --secret "${SP_WEBHOOK_SECRET}" --timestamp "${TS}" --body "${BODY}")"
 
 echo "POST ${URL}"
 echo "X-SP-Timestamp: ${TS}"
 echo "X-SP-Signature: ${SIG}"
 
-curl -i -X POST "${URL}"       -H "Content-Type: application/json"       -H "X-SP-Timestamp: ${TS}"       -H "X-SP-Signature: ${SIG}"       -H "X-SP-Message-Id: msg_local_$(date +%s)"       --data "${BODY}"
+curl -i -X POST "${URL}" \
+  -H "Content-Type: application/json" \
+  -H "X-SP-Timestamp: ${TS}" \
+  -H "X-SP-Signature: ${SIG}" \
+  -H "X-SP-Message-Id: msg_local_$(date +%s)" \
+  --data "${BODY}"

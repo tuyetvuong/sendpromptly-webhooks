@@ -20,12 +20,12 @@ This repo is intentionally **copy/paste friendly**:
 - Webhooks overview: https://sendpromptly.com/docs/webhooks/
 
 ## ✅ Quick start (local test loop)
-1) Pick a receiver:
+1) From repo root, pick a receiver:
    - Node: `examples/node-express`
    - Python: `examples/python-flask`
    - Laravel snippets: `examples/laravel-drop-in`
 
-2) Run Node receiver:
+2) Run Node receiver (terminal 1):
    ```bash
    cd examples/node-express
    cp .env.example .env
@@ -33,14 +33,15 @@ This repo is intentionally **copy/paste friendly**:
    npm run start
    ```
 
-3) Send a signed webhook to it:
+3) From repo root, send a signed webhook (terminal 2):
    ```bash
+   cd /path/to/sendpromptly-webhooks
    export SP_WEBHOOK_SECRET=whsec_replace_me
    ./scripts/send_local_webhook.sh --url http://localhost:3000/webhooks/sendpromptly \
      --body '{"event_key":"order.created","payload":{"order_id":"O-1001"}}'
    ```
 
-4) Validate your implementation with test vectors:
+4) From repo root, validate your implementation with test vectors:
    ```bash
    python3 ./scripts/verify_test_vectors.py
    ```
